@@ -8,7 +8,7 @@ A full-stack, production-ready expense tracking application with AI insights, SM
 |-----------|-------------------------------------------------|
 | Frontend  | React 18, React Router, Chart.js, react-hot-toast |
 | Backend   | Node.js, Express, MongoDB (Mongoose)            |
-| AI        | Anthropic Claude (claude-sonnet-4-20250514)     |
+| AI        | Google Gemini Flash 2.5                         |
 | Auth      | JWT (jsonwebtoken + bcryptjs)                   |
 
 ---
