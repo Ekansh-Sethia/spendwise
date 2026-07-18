@@ -234,8 +234,26 @@ h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 700; line-height: 1
 .txn-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .txn-meta { font-size: 12px; color: var(--text2); margin-top: 2px; }
 .txn-amount { font-family: var(--font-head); font-size: 16px; font-weight: 600; flex-shrink: 0; }
-.txn-actions { display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
-.txn-item:hover .txn-actions { opacity: 1; }
+.txn-actions { display: flex; gap: 4px; opacity: 1; }
+.btn-delete-txn {
+  background: transparent;
+  border: none;
+  color: var(--text2);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.txn-item:hover .btn-delete-txn {
+  color: rgba(255, 101, 132, 0.9);
+}
+.btn-delete-txn:hover {
+  transform: scale(1.15);
+  color: rgba(255, 101, 132, 1) !important;
+}
 
 /* ── AI chat ── */
 .chat-bubble {

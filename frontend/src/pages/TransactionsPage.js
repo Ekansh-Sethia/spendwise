@@ -113,12 +113,12 @@ export default function TransactionsPage() {
                     <div className="txn-amount" style={{ color: cat.color }}>{fmt(t.amount)}</div>
                     <div className="txn-actions">
                       <button
-                        className="btn btn-danger btn-sm btn-icon"
+                        className="btn-delete-txn"
                         onClick={() => deleteTransaction(t._id)}
                         disabled={deleting === t._id}
                         title="Delete"
                       >
-                        {deleting === t._id ? '...' : '🗑'}
+                        {deleting === t._id ? '...' : '✕'}
                       </button>
                     </div>
                   </div>
