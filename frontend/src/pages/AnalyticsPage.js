@@ -19,10 +19,22 @@ const PERIODS = [
 const CHART_OPTS = {
   responsive: true,
   maintainAspectRatio: false,
-  plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ₹' + ctx.raw.toLocaleString('en-IN') } } },
+  plugins: {
+    legend: { display: false },
+    tooltip: {
+      backgroundColor: 'rgba(30, 30, 40, 0.95)',
+      titleColor: '#fff',
+      bodyColor: '#a29bfe',
+      borderColor: 'rgba(255, 255, 255, 0.1)',
+      borderWidth: 1,
+      padding: 10,
+      displayColors: false,
+      callbacks: { label: ctx => ' ₹' + ctx.raw.toLocaleString('en-IN') }
+    }
+  },
   scales: {
-    x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9190a8', font: { size: 11 } } },
-    y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#9190a8', font: { size: 11 }, callback: v => '₹' + (v >= 1000 ? (v/1000).toFixed(0)+'k' : v) } }
+    x: { grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#9190a8', font: { size: 11 } } },
+    y: { grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#9190a8', font: { size: 11 }, callback: v => '₹' + (v >= 1000 ? (v/1000).toFixed(0)+'k' : v) } }
   }
 };
 
@@ -99,7 +111,16 @@ export default function AnalyticsPage() {
     responsive: true, maintainAspectRatio: false, cutout: '65%',
     plugins: {
       legend: { display: false },
-      tooltip: { callbacks: { label: ctx => ` ₹${ctx.raw.toLocaleString('en-IN')} (${ctx.label})` } }
+      tooltip: {
+        backgroundColor: 'rgba(30, 30, 40, 0.95)',
+        titleColor: '#fff',
+        bodyColor: '#a29bfe',
+        borderColor: 'rgba(255, 255, 255, 0.1)',
+        borderWidth: 1,
+        padding: 10,
+        displayColors: false,
+        callbacks: { label: ctx => ` ₹${ctx.raw.toLocaleString('en-IN')} (${ctx.label})` }
+      }
     }
   };
 

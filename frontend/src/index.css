@@ -54,10 +54,17 @@ h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 700; line-height: 1
 
 /* ── Card ── */
 .card {
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  background: rgba(25, 25, 35, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-lg);
   padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 .card-sm { padding: 14px 16px; border-radius: var(--r-md); }
 
@@ -195,7 +202,21 @@ h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 700; line-height: 1
 .grid-auto { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
 
 /* ── Stat card ── */
-.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 18px 20px; }
+.stat-card {
+  background: rgba(25, 25, 35, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.15);
+}
 .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; color: var(--text2); margin-bottom: 8px; }
 .stat-value { font-family: var(--font-head); font-size: 28px; font-weight: 700; line-height: 1; }
 .stat-change { font-size: 12px; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
