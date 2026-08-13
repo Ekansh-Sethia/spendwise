@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
@@ -14,6 +14,14 @@ export default function AppShell() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem('sw_theme') || 'dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('sw_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
   const handleLogout = () => { logout(); navigate('/login'); };
 
@@ -31,7 +39,7 @@ export default function AppShell() {
       <aside className={`sidebar${mobileOpen ? ' open' : ''}`}>
         <div className="nav-logo">spend<span>wise</span></div>
 
-        <nav style={{ flex: 1 }}>
+        <nav style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
           <div className="nav-section-label">Menu</div>
           {NAV_ITEMS.map(item => (
             <NavLink
@@ -45,6 +53,13 @@ export default function AppShell() {
               {item.label}
             </NavLink>
           ))}
+
+          <div style={{ marginTop: 'auto', paddingTop: 16 }}>
+            <button className="nav-link" onClick={toggleTheme} style={{ width: '100%' }}>
+              <span className="nav-icon">{theme === 'dark' ? '☀️' : '🌙'}</span>
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button>
+          </div>
         </nav>
 
         {/* User section */}
