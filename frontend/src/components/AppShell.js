@@ -15,6 +15,7 @@ export default function AppShell() {
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem('sw_theme') || 'dark');
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -23,10 +24,27 @@ export default function AppShell() {
 
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');
 
+  const confirmLogout = () => setShowLogoutModal(true);
   const handleLogout = () => { logout(); navigate('/login'); };
 
   return (
     <div className="app-shell">
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+        <div className="modal-overlay" onClick={() => setShowLogoutModal(false)}>
+          <div className="modal-box" onClick={e => e.stopPropagation()} style={{ maxWidth: 360 }}>
+            <h3 style={{ marginTop: 0, marginBottom: 8, fontSize: 18 }}>Confirm Logout</h3>
+            <p style={{ color: 'var(--text2)', marginBottom: 24, fontSize: 14 }}>
+              Are you sure you want to log out of SpendWise?
+            </p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+              <button className="btn btn-ghost" onClick={() => setShowLogoutModal(false)}>Cancel</button>
+              <button className="btn btn-danger" onClick={handleLogout}>Log Out</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
@@ -78,7 +96,7 @@ export default function AppShell() {
               <div style={{ fontSize: 11, color: 'var(--text2)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user?.email}</div>
             </div>
           </div>
-          <button className="nav-link" onClick={handleLogout} style={{ color: 'var(--accent2)', width: '100%' }}>
+          <button className="nav-link" onClick={confirmLogout} style={{ color: 'var(--accent2)', width: '100%' }}>
             <span className="nav-icon">↩</span> Logout
           </button>
         </div>
