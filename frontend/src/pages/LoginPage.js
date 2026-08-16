@@ -60,29 +60,35 @@ export default function LoginPage() {
               />
             </div>
             <div className="form-group" style={{ position: 'relative', width: '100%' }}>
-              
-              <label className="form-label">Password</label>
-              <input
-                className="form-input" type={ showPassword ? "text" : "password" } name="password"
-                value={form.password} onChange={handle}
-                placeholder="••••••••" required />
-              <button 
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              style={{ 
-                position: 'absolute', 
-                right: '12px', 
-                background: 'none', 
-                border: 'none', 
-                color: 'var(--accent)',
-                cursor: 'pointer',
-                fontSize: '12px',
-                fontWeight: 'bold',
-                zIndex: 2
-              }}
-            >
-      {showPassword ? 'HIDE' : 'SHOW'}
-    </button>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <label className="form-label" style={{ marginBottom: 0 }}>Password</label>
+                <Link to="/forgot-password" style={{ fontSize: 12, color: 'var(--accent)', textDecoration: 'none' }}>Forgot password?</Link>
+              </div>
+              <div style={{ position: 'relative' }}>
+                <input
+                  className="form-input" type={ showPassword ? "text" : "password" } name="password"
+                  value={form.password} onChange={handle}
+                  placeholder="••••••••" required style={{ width: '100%', paddingRight: '60px' }} />
+                <button 
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{ 
+                    position: 'absolute', 
+                    right: '12px', 
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none', 
+                    border: 'none', 
+                    color: 'var(--accent)',
+                    cursor: 'pointer',
+                    fontSize: '12px',
+                    fontWeight: 'bold',
+                    zIndex: 2
+                  }}
+                >
+                  {showPassword ? 'HIDE' : 'SHOW'}
+                </button>
+              </div>
             </div>
             <button className="btn btn-primary btn-lg" type="submit" disabled={loading} style={{ marginTop: 4 }}>
               {loading ? 'Signing in...' : 'Sign in'}
